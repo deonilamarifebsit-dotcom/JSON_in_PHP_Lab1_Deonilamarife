@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Lab 4</title>
+</head>
+<body>
+
+<h2>Lab 4 JSON Input</h2>
+
+<button onclick="sendData()">Send JSON</button>
+
+<p id="result"></p>
+
+<script>
+function sendData() {
+
+    fetch("lab4_input.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: "admin",
+            password: "1234"
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("result").innerHTML = data;
+    });
+
+}
+</script>
+
+</body>
+</html>
